@@ -44,23 +44,37 @@ var register = function(args) {
         });
     }
 
-    // self.deregisterService = function(args) {
-    //     return new Promise((resolve, reject) => {
-    //         self.serviceValidator.validateService(args.service)
-    //             .then(() => {
-    //                 // remove from local memory
+    self.deregisterService = function(args) {
+        return new Promise((resolve, reject) => {
+            if (args && args.service && args.service.name && args.service.version) {
 
-    //                 // emit event
-    //                 // this.eventHandler.emitToSiblings("service.deregistered", args.service);
+                var i = 0,
+                    idx = -1;
 
-    //                 resolve();
-    //             })
-    //             .catch((err) => {
-    //                 self.errorHandler.handleError(err);
-    //                 reject(err);
-    //             })
-    //     });
-    // }
+
+                self.services.forEach((service) => {
+                    if (service.name === args.service.name && service.version === args.service.version) {
+                        idx = i;
+                    }
+                    i++;
+                });
+
+                if (idx >= 0) {
+                    self.services.splice(0, 1);
+                }
+
+                resolve(self.services);
+
+            } else {
+
+                reject({
+                    error: "Service argument not provided or does not have a name and version"
+                });
+
+            }
+
+        });
+    }
 }
 
 module.exports = register;
