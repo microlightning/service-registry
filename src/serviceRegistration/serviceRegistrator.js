@@ -16,24 +16,11 @@ var register = function(args) {
         self.services = [];
     }
 
-    // this.eventHandler.on("service-registry.service.registered", (service) => {
-    //     // store in local memory
-
-    // });
-
-    // this.eventHandler.on("service-registry.service.deregistered", (service) => {
-    //     // remove from local memory
-
-    // })
-
-
     self.registerService = function(args) {
         return new Promise((resolve, reject) => {
             self.serviceValidator.validateService(args)
                 .then(() => {
                     self.services.push(args.service);
-
-                    // this.eventHandler.emitToSiblings("service.registered", args.service);
 
                     resolve(args.service);
                 })

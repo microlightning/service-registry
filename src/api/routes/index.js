@@ -21,3 +21,8 @@
 // POST - forwarded request
 
 // DELETE - forwarded request
+
+
+// /registry/v1/tools/propergate
+
+// GET - refreshes the registry from the database
