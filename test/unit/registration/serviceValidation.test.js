@@ -1,7 +1,12 @@
 const assert = require('assert');
-const serviceValidation = require('../../../src/registration/validation');
+const Validation = require('../../../src/serviceRegistration/serviceValidator');
+
+var serviceValidator;
 
 describe('Service validation requirements...', () => {
+    before(() => {
+        serviceValidator = new Validation();
+    });
 
     describe('Validation must pass if...', () => {
         it('Everything is provided', (done) => {
@@ -15,7 +20,7 @@ describe('Service validation requirements...', () => {
                 service: service
             }
 
-            serviceValidation(args)
+            serviceValidator.validateService(args)
                 .then((service) => {
                     assert(service);
                 })
@@ -26,7 +31,7 @@ describe('Service validation requirements...', () => {
     describe('Validation must fail if...', () => {
 
         it('no arguments are provided', (done) => {
-            serviceValidation()
+            serviceValidator.validateService()
                 .catch((err) => {
                     assert(err.errors);
                 })
@@ -35,7 +40,7 @@ describe('Service validation requirements...', () => {
 
         it('no service argument is provided', (done) => {
             let args = {};
-            serviceValidation(args)
+            serviceValidator.validateService(args)
                 .catch((err) => {
                     assert(err.errors);
                 })
@@ -52,7 +57,7 @@ describe('Service validation requirements...', () => {
                 service: service
             }
 
-            serviceValidation(args)
+            serviceValidator.validateService(args)
                 .catch((err) => {
                     assert(err.errors);
                 })
@@ -70,7 +75,7 @@ describe('Service validation requirements...', () => {
                 service: service
             }
 
-            serviceValidation(args)
+            serviceValidator.validateService(args)
                 .catch((err) => {
                     assert(err.errors);
                 })
@@ -89,7 +94,7 @@ describe('Service validation requirements...', () => {
                 service: service
             }
 
-            serviceValidation(args)
+            serviceValidator.validateService(args)
                 .catch((err) => {
                     assert(err.errors);
                 })
@@ -109,7 +114,7 @@ describe('Service validation requirements...', () => {
                 service: service
             }
 
-            serviceValidation(args)
+            serviceValidator.validateService(args)
                 .catch((err) => {
                     assert(err.errors);
                 })
@@ -127,7 +132,7 @@ describe('Service validation requirements...', () => {
                 service: service
             }
 
-            serviceValidation(args)
+            serviceValidator.validateService(args)
                 .catch((err) => {
                     assert(err.errors);
                 })
@@ -145,7 +150,7 @@ describe('Service validation requirements...', () => {
                 service: service
             }
 
-            serviceValidation(args)
+            serviceValidator.validateService(args)
                 .catch((err) => {
                     assert(err.errors);
                 })

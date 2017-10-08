@@ -4,7 +4,8 @@
   "description": "Jetstream's reverse proxy",
   "main": "index.js",
   "scripts": {
-    "test": "nyc mocha ./test/*/*/*"
+    "test": "nyc mocha ./test/*/*/*",
+    "test:unit": "mocha ./test/*/*/*"
   },
   "keywords": [
     "Microservices",
@@ -17,5 +18,8 @@
   "license": "ISC",
   "devDependencies": {
     "nyc": "^11.2.1"
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
   }
 }
