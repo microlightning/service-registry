@@ -1,6 +1,3 @@
-// initialize the app and add the routes
-// this singleton will require express to be injected so we can test
-
 'use strict';
 
 const _ = require('underscore');
