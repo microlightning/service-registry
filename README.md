@@ -1,4 +1,4 @@
-# Jetstream: Service Registry
+# Microlightning: Service Registry
 ## Description
 A reverse proxy to orchistrate microservices easily by utilising:
 * Self registration of microservices
