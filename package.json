@@ -4,7 +4,7 @@
     "description": "Jetstream's reverse proxy",
     "main": "index.js",
     "scripts": {
-        "test": "nyc mocha ./test/*/*/*",
+        "test": "nyc mocha ./test/*/*/* --reporter mocha-junit-reporter",
         "test:unit": "mocha ./test/unit/*/*",
         "test:functional": "mocha ./test/functional/*/*",
         "test:load": "mocha ./test/unit/*/*",
@@ -22,6 +22,7 @@
     "devDependencies": {
         "istanbul": "^0.4.5",
         "mocha": "^4.0.1",
+        "mocha-junit-reporter": "^1.15.0",
         "nyc": "^11.2.1"
     },
     "dependencies": {
