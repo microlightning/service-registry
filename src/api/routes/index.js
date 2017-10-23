@@ -1,3 +1,22 @@
+'use strict';
+
+const assert = require('assert');
+const _ = require('underscore');
+
+var Routes = function(args) {
+    var self = this;
+    _.extend(self, args);
+
+    assert(self.router, "Argument not provided: router");
+
+    // lets add some routes
+
+}
+
+module.exports = Routes;
+
+
+
 // /registry/v1/services
 
 // GET - returns a list of all services
