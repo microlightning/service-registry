@@ -1,31 +1,33 @@
 {
-  "name": "service-registry",
-  "version": "0.0.1",
-  "description": "Jetstream's reverse proxy",
-  "main": "index.js",
-  "scripts": {
-    "test": "nyc mocha ./test/*/*/*",
-    "test:unit": "mocha ./test/*/*/*",
-    "test:coverage": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/*/*/*"
-  },
-  "keywords": [
-    "Microservices",
-    "Reverse",
-    "Proxy",
-    "Service",
-    "Registry"
-  ],
-  "author": "David Dyke (daviddykeuk@gmail.com)",
-  "license": "ISC",
-  "devDependencies": {
-    "istanbul": "^0.4.5",
-    "mocha": "^4.0.1",
-    "nyc": "^11.2.1"
-  },
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.1",
-    "morgan": "^1.9.0",
-    "underscore": "^1.8.3"
-  }
+    "name": "service-registry",
+    "version": "0.0.1",
+    "description": "Jetstream's reverse proxy",
+    "main": "index.js",
+    "scripts": {
+        "test": "nyc mocha ./test/*/*/*",
+        "test:unit": "mocha ./test/unit/*/*",
+        "test:functional": "mocha ./test/functional/*/*",
+        "test:load": "mocha ./test/unit/*/*",
+        "test:coverage": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/*/*/*"
+    },
+    "keywords": [
+        "Microservices",
+        "Reverse",
+        "Proxy",
+        "Service",
+        "Registry"
+    ],
+    "author": "David Dyke (daviddykeuk@gmail.com)",
+    "license": "ISC",
+    "devDependencies": {
+        "istanbul": "^0.4.5",
+        "mocha": "^4.0.1",
+        "nyc": "^11.2.1"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.16.1",
+        "morgan": "^1.9.0",
+        "underscore": "^1.8.3"
+    }
 }
