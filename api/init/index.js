@@ -13,6 +13,8 @@ var initialize = function(args) {
     args.options.formDataLimit || (args.options.formDataLimit = '4mb');
     args.options.loggingLevel || (args.options.loggingLevel = 'Error');
 
+
+
     args.app.use(bodyParser.urlencoded({ extended: true }));
     args.app.use(bodyParser.json({ limit: args.options.jsonLimit }));
     args.app.use(bodyParser.raw({ type: 'multipart/form-data', limit: args.options.formDataLimit }));

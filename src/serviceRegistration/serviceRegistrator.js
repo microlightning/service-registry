@@ -21,7 +21,6 @@ var register = function(args) {
             self.serviceValidator.validateService(args)
                 .then(() => {
                     self.services.push(args.service);
-
                     resolve(args.service);
                 })
                 .catch((err) => {
@@ -37,7 +36,6 @@ var register = function(args) {
 
                 var i = 0,
                     idx = -1;
-
 
                 self.services.forEach((service) => {
                     if (service.name === args.service.name && service.version === args.service.version) {

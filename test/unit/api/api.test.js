@@ -1,13 +1,30 @@
 const assert = require('assert');
-const express = require('express');
+const ServiceRegistrator = require('../../../src/serviceRegistration/serviceRegistrator');
+const ServiceValidator = require('../../../src/serviceRegistration/serviceValidator');
 
-const Api = require('../../../src/api');
+const Helpers = require('../../helpers');
+
+var serviceRegistrator;
+
+const Api = require('../../../api');
 
 describe('Api requirements...', () => {
+    beforeEach(() => {
+        var args = {
+            serviceValidator: new ServiceValidator(),
+            serviceRepository: Helpers.mockedServiceRepository(),
+            eventHandler: Helpers.mockedEventHandler(),
+            errorHandler: Helpers.mockedErrorHandler()
+        }
+
+        serviceRegistrator = new ServiceRegistrator(args);
+    });
+
     it('must create the api', () => {
 
         var api = new Api({
-            express: express
-        })
+            serviceRegistrator: serviceRegistrator,
+            proxy: {}
+        });
     });
 });
