@@ -1,0 +1,22 @@
+
+Todo:
+  ☐ Registry
+    ☐ Hook up API to code
+    ☐ Test API code
+    ☐ Deregister service
+    ☐ Heartbeat
+  
+  ☐ Proxy
+    ☐ Route requests
+      ☐ GET
+      ☐ PUT
+      ☐ POST
+      ☐ DELETE
+    ☐ Test request proxying
+    
+  ☐ Logging
+    ☐ Requests
+    ☐ Errors
+
+
+
