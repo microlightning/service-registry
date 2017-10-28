@@ -7,7 +7,7 @@ var paths = [
   'api',
   'lib',
   'src',
-  'tests/**/*Test.js'
+  'tests/**/*/*'
 ];
 
 var options = {
