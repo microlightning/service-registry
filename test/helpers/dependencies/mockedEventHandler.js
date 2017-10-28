@@ -1,7 +1,5 @@
 'use strict';
 
-const _ = require('underscore');
-
 var EventHandler = function (args) {
   this.on = function () {
 

@@ -26,7 +26,8 @@ describe('Service registration requirements...', () => {
     });
 
     it('have added a service to the list', () => {
-      assert(serviceRegistrator.services.length === 1, 'Number of services should equal 1, actually equals ' + serviceRegistrator.services.length);
+      assert(serviceRegistrator.services.length === 1,
+        'Number of services should equal 1, actually equals ' + serviceRegistrator.services.length);
     });
 
     it.skip('have added a service to the repository', () => {
@@ -65,7 +66,8 @@ describe('Service registration requirements...', () => {
     });
 
     it('have removed the service from the list', () => {
-      assert(serviceRegistrator.services.length === 0, 'Number of services should equal 0, actually equals ' + serviceRegistrator.services.length);
+      assert(serviceRegistrator.services.length === 0,
+        'Number of services should equal 0, actually equals ' + serviceRegistrator.services.length);
     });
 
     it.skip('have removed the service from the repository', () => {
@@ -114,7 +116,8 @@ describe('Service registration requirements...', () => {
       return serviceRegistrator.registerService({
         service: newerService
       }).then((service) => {
-        assert(serviceRegistrator.services.length === 2, 'Number of services should equal 2, actually equals ' + serviceRegistrator.services.length);
+        assert(serviceRegistrator.services.length === 2,
+          'Number of services should equal 2, actually equals ' + serviceRegistrator.services.length);
       });
     });
 
@@ -129,7 +132,8 @@ describe('Service registration requirements...', () => {
               version: 2
             }
           }).then(() => {
-            assert(serviceRegistrator.services.length === 1, 'Number of services should equal 1, actually equals ' + serviceRegistrator.services.length);
+            assert(serviceRegistrator.services.length === 1,
+              'Number of services should equal 1, actually equals ' + serviceRegistrator.services.length);
           });
         });
     });

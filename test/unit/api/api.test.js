@@ -1,4 +1,5 @@
 const assert = require('assert');
+
 const ServiceRegistrator = require('../../../src/serviceRegistration/serviceRegistrator');
 const ServiceValidator = require('../../../src/serviceRegistration/serviceValidator');
 
@@ -25,5 +26,6 @@ describe('Api requirements...', () => {
       serviceRegistrator: serviceRegistrator,
       proxy: {}
     });
+    assert(api);
   });
 });
