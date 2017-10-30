@@ -2,7 +2,7 @@
 
 const ServiceRegistrator = require('../../../src/serviceRegistration/serviceRegistrator');
 const ServiceValidator = require('../../../src/serviceRegistration/serviceValidator');
-const ServiceRepository = require('../../../lib/serviceRepository');
+const ServiceRepository = require('../../../tools/serviceRepository');
 
 const Helpers = require('../../helpers');
 

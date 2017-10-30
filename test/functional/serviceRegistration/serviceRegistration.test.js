@@ -3,34 +3,84 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const should = chai.should();
 
+const Helpers = require('../../helpers');
+
 chai.use(chaiHttp);
 
 var app;
 
 describe('Service registration API requirements...', () => {
-  before(() => {
+  beforeEach(() => {
     app = require('../../helpers/api');
   });
 
-  after(() => {
+  afterEach(() => {
     app.server.close();
   });
 
   describe('When registering a service it should...', () => {
-    it.skip('Accept a legitimate service', () => {
-
+    it('Accept a legitimate service', (done) => {
+      chai.request(app.api)
+        .post('/registry/v1/services')
+        .set('x-jetstream-trace-id', 'abcd')
+        .set('x-jetstream-source', 'test')
+        .send(Helpers.newService())
+        .end((err, res) => {
+          should.not.exist(err);
+          res.should.have.status(201);
+          res.body.should.be.a('object');
+          should.exist(res.body.id);
+          should.exist(res.body.last_heartbeat);
+          done();
+        });
     });
 
-    it.skip('Reject a service with no name', () => {
+    it('Reject a service with no name', (done) => {
+      var service = Helpers.newService();
+      delete service.name;
 
+      chai.request(app.api)
+        .post('/registry/v1/services')
+        .set('x-jetstream-trace-id', 'abcd')
+        .set('x-jetstream-source', 'test')
+        .send(service)
+        .end((err, res) => {
+          should.exist(err);
+          res.should.have.status(400);
+          done();
+        });
     });
 
-    it.skip('Reject a service with no location', () => {
+    it('Reject a service with no location', (done) => {
+      var service = Helpers.newService();
+      delete service.location;
 
+      chai.request(app.api)
+        .post('/registry/v1/services')
+        .set('x-jetstream-trace-id', 'abcd')
+        .set('x-jetstream-source', 'test')
+        .send(service)
+        .end((err, res) => {
+          should.exist(err);
+          res.should.have.status(400);
+          done();
+        });
     });
 
-    it.skip('Accept a service with no version and make it v1', () => {
+    it('Reject a service with no version', (done) => {
+      var service = Helpers.newService();
+      delete service.version;
 
+      chai.request(app.api)
+        .post('/registry/v1/services')
+        .set('x-jetstream-trace-id', 'abcd')
+        .set('x-jetstream-source', 'test')
+        .send(service)
+        .end((err, res) => {
+          should.exist(err);
+          res.should.have.status(400);
+          done();
+        });
     });
 
     it('Return a list of currently registered services with properties', (done) => {
@@ -42,7 +92,6 @@ describe('Service registration API requirements...', () => {
           should.not.exist(err);
           res.should.have.status(200);
           res.body.should.be.a('array');
-          res.body.length.should.be.eql(0);
           done();
         });
     });

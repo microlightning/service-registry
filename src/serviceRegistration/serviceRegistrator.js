@@ -2,6 +2,7 @@
 
 const assert = require('assert');
 const _ = require('underscore');
+const uuidv4 = require('uuid/v4');
 
 var register = function (args) {
   var self = this;
@@ -21,6 +22,8 @@ var register = function (args) {
     return new Promise((resolve, reject) => {
       self.serviceValidator.validateService(args)
         .then(() => {
+          args.service.id = uuidv4();
+          args.service.last_heartbeat = new Date();
           self.services.push(args.service);
           resolve(args.service);
         })
