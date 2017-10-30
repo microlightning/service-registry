@@ -2,7 +2,8 @@
 
 const ServiceRegistrator = require('./src/serviceRegistration/serviceRegistrator');
 const ServiceValidator = require('./src/serviceRegistration/serviceValidator');
-const ServiceRepository = require('./lib/serviceRepository');
+const ServiceRepository = require('./tools/serviceRepository');
+const ErrorHandler = require('./tools/errorHandler');
 
 const Helpers = require('./test/helpers');
 
@@ -11,12 +12,13 @@ var serviceRegistrator;
 const Api = require('./api');
 
 var serviceRepository = new ServiceRepository();
+var errorHandler = new ErrorHandler();
 
 var args = {
   serviceValidator: new ServiceValidator(),
   serviceRepository: serviceRepository,
   eventHandler: Helpers.mockedEventHandler(),
-  errorHandler: Helpers.mockedErrorHandler()
+  errorHandler: errorHandler
 };
 
 serviceRegistrator = new ServiceRegistrator(args);

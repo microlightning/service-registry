@@ -2,7 +2,7 @@
 
 const _ = require('underscore');
 
-var errorHandler = (args) => {
+var ErrorHandler = function (args) {
   var self = this;
   _.extend(self, args);
 
@@ -19,4 +19,4 @@ var errorHandler = (args) => {
   };
 };
 
-module.exports = errorHandler;
+module.exports = ErrorHandler;
