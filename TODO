@@ -5,6 +5,7 @@ Todo:
     ☐ Test API code
     ☐ Deregister service
     ☐ Heartbeat
+    ☐ Store and restore services
   
   ☐ Proxy
     ☐ Route requests

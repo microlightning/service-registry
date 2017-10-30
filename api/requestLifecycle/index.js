@@ -18,6 +18,9 @@ var requestLifeCycleEvents = {
     } else {
       req.headers['x-jetstream-parent-trace-id'] =
                 req.headers['x-jetstream-trace-id'];
+      res.headers = {
+        'x-jetstream-parent-trace-id': req.headers['x-jetstream-trace-id']
+      };
       req.headers['x-jetstream-trace-id'] =
                 uuidv4();
       next();
@@ -27,7 +30,7 @@ var requestLifeCycleEvents = {
   // fired at the very end of a request, after anything else
   // including the result being sent
   endRequest: function (req, res, next) {
-    next();
+    res.end();
   }
 };
 

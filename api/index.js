@@ -16,10 +16,8 @@ var Api = function (args) {
     options: args.options
   });
 
-  args.app = this.app;
-
   var routes = new Routes(args);
-  routes.registerRoutes();
+  routes.registerRoutes(this.app);
 
   this.app.use(requestLifecycle.endRequest);
 };
