@@ -5,10 +5,10 @@
     "main": "index.js",
     "scripts": {
         "start": "node app.js",
-        "test": "nyc mocha ./test/*/*/*.test.js --reporter mocha-junit-reporter --exit",
+        "test": "nyc mocha ./src/*/test/*.spec.js --reporter mocha-junit-reporter --exit",
         "test:all": "mocha ./test/*/*/*.test.js",
-        "test:unit": "mocha ./test/unit/*/*",
-        "test:functional": "mocha ./test/functional/*/* --exit",
+        "test:unit": "mocha ./src/*/test/*.spec.js",
+        "test:acceptance": "mocha ./test/acceptance/*/*.spec.js --exit",
         "test:load": "mocha ./test/load/*/*",
         "test:lint": "mocha ./test/code/*/*",
         "test:coverage": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/*/*/*"

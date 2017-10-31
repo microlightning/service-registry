@@ -1,33 +1,22 @@
 'use strict';
 
-const ServiceRegistrator = require('./src/serviceRegistration/serviceRegistrator');
-const ServiceValidator = require('./src/serviceRegistration/serviceValidator');
-const ServiceRepository = require('./tools/serviceRepository');
-const ErrorHandler = require('./tools/errorHandler');
+const expressApp = require('./tools/express-app');
 
-const Helpers = require('./test/helpers');
-
-var serviceRegistrator;
-
-const Api = require('./api');
-
-var serviceRepository = new ServiceRepository();
-var errorHandler = new ErrorHandler();
+const repositories = require('./tools/data-repositories');
+const ErrorHandler = require('./tools/error-handler');
+const EventHandler = require('./tools/event-handler');
 
 var args = {
-  serviceValidator: new ServiceValidator(),
-  serviceRepository: serviceRepository,
-  eventHandler: Helpers.mockedEventHandler(),
-  errorHandler: errorHandler
+  serviceRepository: new repositories.ServiceRepository(),
+  eventHandler: new EventHandler(),
+  errorHandler: new ErrorHandler()
 };
 
-serviceRegistrator = new ServiceRegistrator(args);
+var app = expressApp();
 
-var api = new Api({
-  serviceRegistrator: serviceRegistrator,
-  proxy: {}
-});
+const serviceRegistration = require('./src/service-registration');
+app.use('/registry/v1', serviceRegistration.routes(args));
 
-api.app.listen(3000, function () {
+app.listen(3000, function () {
   console.log('Example app listening on port 3000!');
 });

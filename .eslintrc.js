@@ -23,5 +23,5 @@ module.exports = {
         "semi": [2, "always"],
         "keyword-spacing": [2, { "before": true, "after": true }],
         "space-unary-ops": 2
-    }
+    },
 };

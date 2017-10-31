@@ -21,6 +21,5 @@ There are no tricks, this is a very simple node application which acts as the co
 ## Folders
 
 * `./src` is where the logic for the application resides and is where the unit tests are primary focused.
-* `./routes` is where the Express routing is set up for the API.
-* `./lib` is where dependencies are stored, e.g. connectors to RabbitMQ and Redis.
 * `./test` is where tests can be found, both unit and functional as well as some helpers.
+* `./tools` is where dependencies are stored, e.g. connectors to RabbitMQ and Redis.
