@@ -31,7 +31,7 @@ var requestLifeCycleEvents = {
   // fired at the very end of a request, after anything else
   // including the result being sent
   endRequest: function (req, res, next) {
-    res.end();
+
   }
 };
 
