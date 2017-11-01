@@ -11,7 +11,7 @@ var RequestProxyController = function (args) {
   this.proxy = (req, res) => {
     var request = {
       service: req.params.service_name,
-      version: req.params.service_version,
+      version: parseInt(req.params.service_version),
       headers: req.headers,
       method: req.method,
       url: `/${req.params[0]}`,
