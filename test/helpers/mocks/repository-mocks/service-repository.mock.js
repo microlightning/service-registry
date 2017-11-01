@@ -47,6 +47,25 @@ var ServiceRepository = function () {
       }
     });
   };
+
+  self.removeService = function (name, version) {
+    return new Promise((resolve, reject) => {
+      var i = 0;
+      var idx = -1;
+
+      self.services.forEach((service) => {
+        if (service.name === name && service.version === version) {
+          idx = i;
+        }
+        i++;
+      });
+
+      if (idx >= 0) {
+        self.services.splice(0, 1);
+      }
+      resolve(self.sevices);
+    });
+  };
 };
 
 module.exports = ServiceRepository;

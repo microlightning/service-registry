@@ -14,13 +14,9 @@ var register = function (args) {
     'Missing argument(s) - one or many of the following arguments are missing: ' +
         'serviceRepository, eventHandler, errorHandler');
 
-  this.serviceValidator = new ServiceValidator();
+  self.serviceValidator = new ServiceValidator();
 
-  if (args.services) {
-    self.services = args.services;
-  } else {
-    self.services = [];
-  }
+  self.getAllServices = self.serviceRepository.getAllServices;
 
   self.registerService = function (args) {
     return new Promise((resolve, reject) => {
@@ -28,7 +24,7 @@ var register = function (args) {
         .then(() => {
           args.service.id = uuidv4();
           args.service.last_heartbeat = new Date();
-          self.services.push(args.service);
+          self.serviceRepository.addService(args.service);
           resolve(args.service);
         })
         .catch((err) => {
@@ -41,21 +37,9 @@ var register = function (args) {
   self.deregisterService = function (args) {
     return new Promise((resolve, reject) => {
       if (args && args.service && args.service.name && args.service.version) {
-        var i = 0;
-        var idx = -1;
-
-        self.services.forEach((service) => {
-          if (service.name === args.service.name && service.version === args.service.version) {
-            idx = i;
-          }
-          i++;
-        });
-
-        if (idx >= 0) {
-          self.services.splice(0, 1);
-        }
-
-        resolve(self.services);
+        self.serviceRepository.removeService(args.service.name, args.service.version)
+          .then(resolve)
+          .catch(reject);
       } else {
         reject(new Error('Service argument not provided or does not have a name and version'));
       }

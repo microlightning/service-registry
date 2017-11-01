@@ -1,3 +1,3 @@
 module.exports = {
-  proxyRequest: require('./proxy-request')
+  ProxyRequest: require('./proxy-request')
 };

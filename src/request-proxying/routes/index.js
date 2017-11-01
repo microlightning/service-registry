@@ -1,16 +1,16 @@
 'use strict';
 
 const express = require('express');
-const ServicesController = require('./servicesController');
+const RequestProxyController = require('./request-proxying-controller');
 
 var Router = function (args) {
   var router = express.Router();
-  var servicesController = new ServicesController(args);
+  var servicesController = new RequestProxyController(args);
 
-  router.get('/:service_name/(*)', servicesController.proxyGet);
-  router.put('/:service_name/(*)', servicesController.proxyPut);
-  router.post('/:service_name/(*)', servicesController.proxyPost);
-  router.delete('/:service_name/(*)', servicesController.proxyDelete);
+  router.get('/:service_name/v:service_version/(*)', servicesController.proxy);
+  router.put('/:service_name/v:service_version/(*)', servicesController.proxy);
+  router.post('/:service_name/v:service_version/(*)', servicesController.proxy);
+  router.delete('/:service_name/v:service_version/(*)', servicesController.proxy);
 
   return router;
 };

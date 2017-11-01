@@ -12,23 +12,28 @@ var Proxy = function (args) {
 
   self.makeRequest = function (args) {
     return new Promise((resolve, reject) => {
-      self.serviceRepository.getServiceByNameAndVersion(args.service, args.version).then((service) => {
-        var url = service.location + args.url;
+      self.serviceRepository.getServiceByNameAndVersion(args.service, args.version)
+        .then((service) => {
+          var url = service.location + args.url;
 
-        var requestObject = {
-          method: args.method,
-          headers: args.headers,
-          url: url
-        };
+          var requestObject = {
+            method: args.method,
+            headers: args.headers,
+            url: url
+          };
 
-        request(requestObject, (err, response) => {
-          if (err) {
-            reject(err);
-          } else {
-            resolve(response);
-          }
-        }).pipe(args.res);
-      });
+          request(requestObject, (err, response) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(response);
+            }
+          }).pipe(args.res);
+        })
+        .catch((err) => {
+          console.log(err);
+          args.res.status(500).send(err);
+        });
     });
   };
 };

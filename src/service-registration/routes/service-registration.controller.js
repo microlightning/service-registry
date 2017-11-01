@@ -10,18 +10,27 @@ var RegistryController = function (args) {
   self.serviceRegistrator = new serviceRegistration.ServiceRegistrator(args);
 
   self.getAllServices = (req, res, next) => {
-    res.send(self.serviceRegistrator.services);
-    next();
+    self.serviceRegistrator.getAllServices()
+      .then((services) => {
+        res.send(services);
+        next();
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+        next();
+      });
   };
 
-  self.registerNewService = (req, res) => {
+  self.registerNewService = (req, res, next) => {
     var service = req.body;
     self.serviceRegistrator.registerService({service: service})
       .then((s) => {
         res.status(201).send(s);
+        next();
       })
       .catch((err) => {
         res.status(400).send(err);
+        next();
       });
   };
 };
