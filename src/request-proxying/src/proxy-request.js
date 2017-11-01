@@ -18,9 +18,11 @@ var Proxy = function (args) {
 
           var requestObject = {
             method: args.method,
-            headers: args.headers,
+            headers: args.headers || [],
             url: url
           };
+
+          requestObject.headers['connection'] = 'keep-alive';
 
           request(requestObject, (err, response) => {
             if (err) {
