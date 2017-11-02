@@ -14,11 +14,12 @@ var args = {
 var app = expressApp();
 
 const serviceRegistration = require('../../../../src/service-registration');
-app.use('/registry/v1', serviceRegistration.routes(args));
+app.use('/v1/registry', serviceRegistration.routes(args));
 
-var server = app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+const requestProxy = require('../../../../src/request-proxying');
+app.use('/v1/services', requestProxy.routes(args));
+
+var server = app.listen(3000);
 
 module.exports = {
   api: app,
