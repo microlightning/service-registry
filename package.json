@@ -1,49 +1,50 @@
 {
-  "name": "service-registry",
-  "version": "0.0.1",
-  "description": "Jetstream's reverse proxy",
-  "main": "index.js",
-  "scripts": {
-    "start": "node app.js",
-    "test": "nyc mocha ./src/*/test/*.spec.js ./test/acceptance/*/*.spec.js --reporter mocha-junit-reporter --exit",
-    "test:all": "mocha ./test/*/*/*.test.js  ./test/acceptance/*/*.spec.js --exit",
-    "test:unit": "mocha ./src/*/test/*.spec.js",
-    "test:acceptance": "mocha ./test/acceptance/*/*.spec.js --exit",
-    "test:load": "mocha ./test/load/*/*",
-    "test:lint": "mocha ./test/code/*/*",
-    "test:coverage": "istanbul cover ./node_modules/mocha/bin/_mocha ./test/*/*/*"
-  },
-  "keywords": [
-    "Microservices",
-    "Reverse",
-    "Proxy",
-    "Service",
-    "Registry"
-  ],
-  "author": "David Dyke (daviddykeuk@gmail.com)",
-  "license": "ISC",
-  "devDependencies": {
-    "chai": "^4.1.2",
-    "chai-http": "^3.0.0",
-    "eslint": "^4.10.0",
-    "eslint-config-standard": "^10.2.1",
-    "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-node": "^5.2.1",
-    "eslint-plugin-promise": "^3.6.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "istanbul": "^0.4.5",
-    "mocha": "^4.0.1",
-    "mocha-eslint": "^4.1.0",
-    "mocha-junit-reporter": "^1.15.0",
-    "nock": "^9.0.27",
-    "nyc": "^11.2.1"
-  },
-  "dependencies": {
-    "body-parser": "^1.18.2",
-    "express": "^4.16.1",
-    "morgan": "^1.9.0",
-    "request": "^2.83.0",
-    "underscore": "^1.8.3",
-    "uuid": "^3.1.0"
-  }
+    "name": "service-registry",
+    "version": "0.0.1",
+    "description": "Jetstream's reverse proxy",
+    "main": "index.js",
+    "scripts": {
+        "start": "node app.js",
+        "test": "istanbul cover ./node_modules/mocha/bin/_mocha ./src/*/test/*.spec.js ./test/acceptance/*/*.spec.js --report lcovonly -- -R spec  --exit && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+        "test:all": "mocha ./test/*/*/*.test.js  ./test/acceptance/*/*.spec.js --exit",
+        "test:unit": "mocha ./src/*/test/*.spec.js",
+        "test:acceptance": "mocha ./test/acceptance/*/*.spec.js --exit",
+        "test:load": "mocha ./test/load/*/*",
+        "test:lint": "mocha ./test/code/*/*",
+        "test:coverage": "nyc mocha ./src/*/test/*.spec.js ./test/acceptance/*/*.spec.js --reporter mocha-junit-reporter --exit"
+    },
+    "keywords": [
+        "Microservices",
+        "Reverse",
+        "Proxy",
+        "Service",
+        "Registry"
+    ],
+    "author": "David Dyke (daviddykeuk@gmail.com)",
+    "license": "ISC",
+    "devDependencies": {
+        "chai": "^4.1.2",
+        "chai-http": "^3.0.0",
+        "coveralls": "^3.0.0",
+        "eslint": "^4.10.0",
+        "eslint-config-standard": "^10.2.1",
+        "eslint-plugin-import": "^2.8.0",
+        "eslint-plugin-node": "^5.2.1",
+        "eslint-plugin-promise": "^3.6.0",
+        "eslint-plugin-standard": "^3.0.1",
+        "istanbul": "^0.4.5",
+        "mocha": "^4.0.1",
+        "mocha-eslint": "^4.1.0",
+        "mocha-junit-reporter": "^1.15.0",
+        "nock": "^9.0.27",
+        "nyc": "^11.2.1"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.2",
+        "express": "^4.16.1",
+        "morgan": "^1.9.0",
+        "request": "^2.83.0",
+        "underscore": "^1.8.3",
+        "uuid": "^3.1.0"
+    }
 }
