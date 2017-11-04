@@ -10,7 +10,7 @@ var app;
 var serviceId;
 var newServiceId;
 
-describe('End to end requirements...', () => {
+describe.skip('End to end requirements...', () => {
   before(() => {
     helpers.mocks.useMockedExternalServices();
     app = require('../../../test/helpers/mocks/api-mocks');
