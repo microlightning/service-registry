@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "test": "nyc mocha ./src/*/test/*.spec.js --reporter mocha-junit-reporter --exit",
-    "test:all": "mocha ./test/*/*/*.test.js",
+    "test": "nyc mocha ./src/*/test/*.spec.js ./test/acceptance/*/*.spec.js --reporter mocha-junit-reporter --exit",
+    "test:all": "mocha ./test/*/*/*.test.js  ./test/acceptance/*/*.spec.js --exit",
     "test:unit": "mocha ./src/*/test/*.spec.js",
     "test:acceptance": "mocha ./test/acceptance/*/*.spec.js --exit",
     "test:load": "mocha ./test/load/*/*",

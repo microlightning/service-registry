@@ -21,7 +21,7 @@ describe('Service registration API requirements...', () => {
   describe('When registering a service it should...', () => {
     it('Accept a legitimate service', (done) => {
       chai.request(app.api)
-        .post('/registry/v1/services')
+        .post('/v1/registry/services')
         .set('x-jetstream-trace-id', 'abcd')
         .set('x-jetstream-source', 'test')
         .send(exampleHelpers.services.newService())
@@ -40,7 +40,7 @@ describe('Service registration API requirements...', () => {
       delete service.name;
 
       chai.request(app.api)
-        .post('/registry/v1/services')
+        .post('/v1/registry/services')
         .set('x-jetstream-trace-id', 'abcd')
         .set('x-jetstream-source', 'test')
         .send(service)
@@ -56,7 +56,7 @@ describe('Service registration API requirements...', () => {
       delete service.location;
 
       chai.request(app.api)
-        .post('/registry/v1/services')
+        .post('/v1/registry/services')
         .set('x-jetstream-trace-id', 'abcd')
         .set('x-jetstream-source', 'test')
         .send(service)
@@ -72,7 +72,7 @@ describe('Service registration API requirements...', () => {
       delete service.version;
 
       chai.request(app.api)
-        .post('/registry/v1/services')
+        .post('/v1/registry/services')
         .set('x-jetstream-trace-id', 'abcd')
         .set('x-jetstream-source', 'test')
         .send(service)
@@ -85,7 +85,7 @@ describe('Service registration API requirements...', () => {
 
     it('Return a list of currently registered services with properties', (done) => {
       chai.request(app.api)
-        .get('/registry/v1/services')
+        .get('/v1/registry/services')
         .set('x-jetstream-trace-id', 'abcd')
         .set('x-jetstream-source', 'test')
         .end((err, res) => {

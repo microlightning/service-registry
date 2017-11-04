@@ -33,8 +33,8 @@ var Proxy = function (args) {
           }).pipe(args.res);
         })
         .catch((err) => {
-          console.log(err);
-          args.res.status(500).send(err);
+          args.res.status(400).send('Sevice "' + args.service + '" could not be found');
+          reject(err);
         });
     });
   };

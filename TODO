@@ -1,23 +1,27 @@
 
 Todo:
   ☐ Registry
-    ☐ Hook up API to code
+    ✔ Hook up API to code
     ☐ Test API code
     ☐ Deregister service
     ☐ Heartbeat
     ☐ Store and restore services
+    ☐ Use persistent storage
   
   ☐ Proxy
-    ☐ Route requests
-      ☐ GET
-      ☐ PUT
-      ☐ POST
-      ☐ DELETE
+    ✔ Route requests
+      ✔ GET
+      ✔ PUT
+      ✔ POST
+      ✔ DELETE
     ☐ Test request proxying
+    ☐ Validate requests
     
   ☐ Logging
     ☐ Requests
     ☐ Errors
 
-
+  ☐ Scaling
+     ☐ Send events on change
+     ☐ Force refresh on event
 

@@ -1,5 +1,5 @@
 const assert = require('assert');
-const Proxy = require('../src/proxy-request');
+const Proxy = require('../src/request-proxy');
 const helpers = require('../../../test/helpers');
 
 describe('Proxy request requirements', () => {
@@ -18,7 +18,6 @@ describe('Proxy request requirements', () => {
       proxy.makeRequest(request).then((response) => {
         assert(response.statusCode === 200);
       }).catch((err) => {
-        console.log(err);
         assert(!err);
       }).then(done, done);
     });
