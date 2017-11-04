@@ -1,4 +1,4 @@
-# Microlightning: Service Registry
+# Turbosonic: service-registry [![Build Status](https://secure.travis-ci.org/microlightning/service-registry.png?branch=master)](https://travis-ci.org/microlightning/service-registry)
 ## Description
 A reverse proxy to orchistrate microservices easily by utilising:
 * Self registration of microservices
