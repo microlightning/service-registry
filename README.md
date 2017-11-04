@@ -1,4 +1,7 @@
-# Turbosonic: service-registry [![Build Status](https://secure.travis-ci.org/microlightning/service-registry.png?branch=master)](https://travis-ci.org/microlightning/service-registry) [![Coverage Status](https://coveralls.io/repos/github/microlightning/service-registry/badge.svg?branch=master)](https://coveralls.io/github/microlightning/service-registry?branch=master)
+# Turbosonic: service-registry
+[![Build Status](https://secure.travis-ci.org/microlightning/service-registry.png?branch=master)](https://travis-ci.org/microlightning/service-registry)
+[![Coverage Status](https://coveralls.io/repos/github/microlightning/service-registry/badge.svg?branch=master)](https://coveralls.io/github/microlightning/service-registry?branch=master)
+[![Known Vulnerabilities](https://snyk.io/test/github/microlightning/service-registry/badge.svg)](https://snyk.io/test/github/microlightning/service-registry)
 ## Description
 A reverse proxy to orchistrate microservices easily by utilising:
 * Self registration of microservices
