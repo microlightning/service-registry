@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node app.js",
         "test": "istanbul cover ./node_modules/mocha/bin/_mocha ./src/*/test/*.spec.js ./test/acceptance/*/*.spec.js --report lcovonly -- -R spec  --exit && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-        "test:all": "mocha ./test/*/*/*.test.js  ./test/acceptance/*/*.spec.js --exit",
+        "test:all": "mocha ./src/*/test/*.spec.js  ./test/acceptance/*/*.spec.js --exit",
         "test:unit": "mocha ./src/*/test/*.spec.js",
         "test:acceptance": "mocha ./test/acceptance/*/*.spec.js --exit",
         "test:load": "mocha ./test/load/*/*",
